@@ -13,7 +13,10 @@ namespace KLoveCompanyCRUD.Controllers
     {
         private readonly KLoveCompanyCRUDContext _context;
 
-        private SummaryVM viewModelSummary = new SummaryVM();
+        public List<SummaryVM> viewModelSummaryList = new List<SummaryVM>();
+
+        public SummaryVM testRaf = new SummaryVM();
+        
 
         //public IActionResult Index()
         //{
@@ -30,9 +33,35 @@ namespace KLoveCompanyCRUD.Controllers
         {
             var employees = await _context.Employee.ToListAsync();
             var departments = await _context.Department.ToListAsync();
-            viewModelSummary.AddressLine1 = employees[0].AddressLine1;
-            viewModelSummary.Name = departments[0].Name;
-            return View(viewModelSummary);
+
+            var innerJoinQuery =
+                from employee in employees
+                join department in departments on employee.DepartmentId equals department.Id
+                select new { Department = department.Name, FirstName = employee.FirstName, LastName = employee.LastName,
+                             Address1 = employee.AddressLine1, Address2 = employee.AddressLine2,
+                             City = employee.City, State = employee.State, Zip = employee.Zip,
+                             Email1 = employee.Email1, Email2 = employee.Email2}; //produces flat sequence
+
+            //not pretty, but will do for now.  Git err dun.
+            foreach (var row in innerJoinQuery)
+            {
+                var viewModelSummary = new SummaryVM();
+                viewModelSummary.Name = row.Department;
+                viewModelSummary.FirstName = row.FirstName;
+                viewModelSummary.LastName = row.LastName;
+                viewModelSummary.AddressLine1 = row.Address1;
+                viewModelSummary.AddressLine2 = row.Address2;
+                viewModelSummary.City = row.City;
+                viewModelSummary.State = row.State;
+                viewModelSummary.Zip = row.Zip;
+                viewModelSummary.Email1 = row.Email1;
+                viewModelSummary.Email2 = row.Email2;
+                //viewModelSummaryList.Add(viewModelSummary);
+                testRaf.summaryVMs.Add(viewModelSummary);
+            }
+
+            //return View(viewModelSummaryList);
+            return View(testRaf);
         }
     }
 }

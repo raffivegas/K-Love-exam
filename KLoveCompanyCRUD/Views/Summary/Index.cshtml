@@ -1,43 +1,62 @@
 ﻿
-@model KLoveCompanyCRUD.View_Models.SummaryVM
+@model IEnumerable<KLoveCompanyCRUD.View_Models.SummaryVM>
 
-    @{
+@{
     ViewData["Title"] = "Summary";
-    }
+}
 
-    <h1>Summary</h1>
+<h1>Summary</h1>
 
 
-    <h1>Index</h1>
+<h1>Index</h1>
 
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                    @Html.DisplayFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AddressLine1)
-                    @Html.DisplayFor(model => model.AddressLine1)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @*@foreach (var item in Model) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Name">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.AddressLine1">Details</a> |
-                </td>
-            </tr>
-}*@
-        </tbody>
-    </table>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+                @*@Html.DisplayFor(model => model.Name)*@
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddressLine1)
+                @*@Html.DisplayFor(model => model.AddressLine1)*@
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @*@Html.DropDownListFor(m => m.summaryVMs,
+            new SelectList(Model.summaryVMs,
+                           "Name"))*@
+        @foreach (var item in Model) {
+                        <tr>
+                            <td>
+                                Department:&nbsp;
+                                @Html.DisplayFor(modelItem => item.Name)
+                                <br>
+                                @Html.DisplayFor(modelItem => item.FirstName)
+                                @Html.DisplayFor(modelItem => item.LastName)
+                                <br>
+                                @Html.DisplayFor(modelItem => item.AddressLine1)
+                                <br>
+                                @Html.DisplayFor(modelItem => !String.IsNullOrEmpty(item.AddressLine2) ? '' : item.AddressLine2)
+                                @Html.DisplayFor(modelItem => item.City),&nbsp;
+                                @Html.DisplayFor(modelItem => item.State)&nbsp;
+                                @Html.DisplayFor(modelItem => item.Zip)
+                                <br>
+                                @Html.DisplayFor(modelItem => item.Email1)
+                                <br>
+                                @Html.DisplayFor(modelItem => item.Email2)
+                                <br>
+                            </td>
+                                @*<td>
+            <a asp-action="Edit" asp-route-id="@item.Name">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.AddressLine1">Details</a> |
+        </td>*@
+</tr>
+            }
+    </tbody>
+</table>
