@@ -14,6 +14,7 @@ namespace KLoveCompanyCRUD.Models
         {
         }
         public DbSet<KLoveCompanyCRUD.Models.Department> Department { get; set; }
+        public DbSet<KLoveCompanyCRUD.Models.Employee> Employee { get; set; }
 
     }
 }
