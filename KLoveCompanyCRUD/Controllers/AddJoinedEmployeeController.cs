@@ -39,14 +39,15 @@ namespace KLoveCompanyCRUD.Controllers
             var listOfDepartments = from department in departments
                                     select new
                                     {
-                                        DepartmentName = department.Name
+                                        DepartmentName = department.Name,
+                                        DepartmentId = department.Id
                                     };
 
 
             //not pretty, but will do for now.  Git err dun.
             foreach (var row in listOfDepartments)
             {
-                viewModelAddEmployee.Departments.Add(row.DepartmentName);
+                viewModelAddEmployee.Departments.Add(row.DepartmentName, row.DepartmentId.ToString());
             }
 
             //return View(viewModelSummaryList);
@@ -59,15 +60,17 @@ namespace KLoveCompanyCRUD.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //public async Task<IActionResult> Create([Bind("FirstName,LastName,AddressLine1,AddressLine2,City,State,Zip,Email1,Email2")] Employee employee)
-        public async Task<IActionResult> Create(AddEmployeeVM viewModel, [Bind("FirstName,LastName,AddressLine1,AddressLine2,City,State,Zip,Email1,Email2")] Employee employee)
+        public async Task<IActionResult> Create(AddEmployeeVM dept,[Bind("FirstName,LastName,AddressLine1,AddressLine2,City,State,Zip,Email1,Email2")] Employee employee)
         {
-            string tst = Request.Form["Name"];
+
             if (ModelState.IsValid)
             {
                 //Employee employee = new Employee();
                 //employee.AddressLine1 = 
                 //var test = viewModel.Name;
-                _context.Add(employee);
+                string tst = Request.Form["Departments"][0];
+                //employee.
+                //_context.Add(employee);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

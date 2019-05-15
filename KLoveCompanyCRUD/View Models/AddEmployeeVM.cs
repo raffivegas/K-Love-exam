@@ -14,7 +14,7 @@ namespace KLoveCompanyCRUD.View_Models
         public class AddEmployeeVM /*: IEnumerable<SummaryVM>*/
         {
             public int EId { get; set; }
-            public int DepartmentId { get; set; }
+            public string DepartmentId { get; set; }
             public string FirstName { get; set; }
             public string LastName { get; set; }
             public string AddressLine1 { get; set; }
@@ -25,14 +25,14 @@ namespace KLoveCompanyCRUD.View_Models
             public string Email1 { get; set; }
             public string Email2 { get; set; }
 
-            public int DId { get; set; }
+            public string DId { get; set; }
             public string Name { get; set; }
 
-            public List<string> Departments { get; set; }
+            public Dictionary<string, string> Departments { get; set; }
 
             public AddEmployeeVM()
             {
-                Departments = new List<string>();
+                Departments = new Dictionary<string, string>();
             }
 
             //public IEnumerator<SummaryVM> GetEnumerator()
