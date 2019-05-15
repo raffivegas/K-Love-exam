@@ -73,7 +73,7 @@ namespace KLoveCompanyCRUD.Controllers
                 return NotFound();
             }
 
-            return RedirectToAction("Edit", "AddJoinedEmployee", new { id });
+            return RedirectToAction("Edit", "JoinedEmployee", new { id });
         }
 
     }

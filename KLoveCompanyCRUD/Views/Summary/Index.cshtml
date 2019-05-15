@@ -1,6 +1,4 @@
 ﻿
-
-
 @model IEnumerable<KLoveCompanyCRUD.View_Models.SummaryVM>
 
 @{
@@ -10,8 +8,7 @@
 <h1>Summary</h1>
 
 <p>
-    <a asp-action="Index" asp-controller="AddJoinedEmployee">Add New Employee</a>
-    @*<a asp-action="Edit" asp-controller="Employees" asp-route-id="@item.EId">Edit</a>*@
+    <a asp-action="Create" asp-controller="JoinedEmployee">Add New Employee</a>
 </p>
 <table class="table">
     <thead>

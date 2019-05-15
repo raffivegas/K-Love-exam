@@ -65,7 +65,7 @@ namespace KLoveCompanyCRUD
                     template: "{controller=Summary}/{action=Index}/{id?}");
                 routes.MapRoute(
                     name: "EditEmployee",
-                    template: "AddJoinedEmployee/{action=Edit}/{id?}"
+                    template: "JoinedEmployee/{action=Edit}/{id?}"
                     );
             });
         }

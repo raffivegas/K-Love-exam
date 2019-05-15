@@ -9,14 +9,14 @@ using KLoveCompanyCRUD.View_Models;
 
 namespace KLoveCompanyCRUD.Controllers
 {
-    public class AddJoinedEmployeeController : Controller
+    public class JoinedEmployeeController : Controller
     {
         private readonly KLoveCompanyCRUDContext _context;
         private List<string> _departments;
 
         public AddEmployeeVM viewModelAddEmployee;
 
-        public AddJoinedEmployeeController(KLoveCompanyCRUDContext context)
+        public JoinedEmployeeController(KLoveCompanyCRUDContext context)
         {
             _context = context;
             //viewModelAddEmployee = new AddEmployeeVM();
@@ -29,7 +29,7 @@ namespace KLoveCompanyCRUD.Controllers
         }
 
         // GET: Employees
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Create()
         {
             var employees = await _context.Employee.ToListAsync();
             var departments = await _context.Department.ToListAsync();
