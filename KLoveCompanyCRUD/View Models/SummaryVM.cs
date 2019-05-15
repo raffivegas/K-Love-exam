@@ -21,7 +21,7 @@ namespace KLoveCompanyCRUD.View_Models
         public string Email2 { get; set; }
 
         public int DId { get; set; }
-        public string Name { get; set; }
+        public string Department { get; set; }
 
         public List<SummaryVM> summaryVMs { get; set; }
 

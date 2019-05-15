@@ -37,7 +37,7 @@ namespace KLoveCompanyCRUD.Controllers
             var innerJoinQuery =
                 from employee in employees
                 join department in departments on employee.DepartmentId equals department.Id
-                select new { Department = department.Name, FirstName = employee.FirstName, LastName = employee.LastName,
+                select new { Department = department.Name, EId = employee.Id, FirstName = employee.FirstName, LastName = employee.LastName,
                              Address1 = employee.AddressLine1, Address2 = employee.AddressLine2,
                              City = employee.City, State = employee.State, Zip = employee.Zip,
                              Email1 = employee.Email1, Email2 = employee.Email2}; //produces flat sequence
@@ -46,7 +46,8 @@ namespace KLoveCompanyCRUD.Controllers
             foreach (var row in innerJoinQuery)
             {
                 var viewModelSummary = new SummaryVM();
-                viewModelSummary.Name = row.Department;
+                viewModelSummary.Department = row.Department;
+                viewModelSummary.EId = row.EId;
                 viewModelSummary.FirstName = row.FirstName;
                 viewModelSummary.LastName = row.LastName;
                 viewModelSummary.AddressLine1 = row.Address1;

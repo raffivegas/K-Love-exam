@@ -1,12 +1,11 @@
 ﻿
+
+
 @model IEnumerable<KLoveCompanyCRUD.View_Models.SummaryVM>
 
 @{
-    ViewData["Title"] = "Summary";
+    ViewData["Title"] = "Index";
 }
-
-<h1>Summary</h1>
-
 
 <h1>Index</h1>
 
@@ -17,46 +16,80 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
-                @*@Html.DisplayFor(model => model.Name)*@
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.AddressLine1)
-                @*@Html.DisplayFor(model => model.AddressLine1)*@
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddressLine2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Zip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email2)
             </th>
             <th></th>
         </tr>
+       
     </thead>
     <tbody>
-        @*@Html.DropDownListFor(m => m.summaryVMs,
-            new SelectList(Model.summaryVMs,
-                           "Name"))*@
-        @foreach (var item in Model) {
-                        <tr>
-                            <td>
-                                Department:&nbsp;
-                                @Html.DisplayFor(modelItem => item.Name)
-                                <br>
-                                @Html.DisplayFor(modelItem => item.FirstName)
-                                @Html.DisplayFor(modelItem => item.LastName)
-                                <br>
-                                @Html.DisplayFor(modelItem => item.AddressLine1)
-                                <br>
-                                @Html.DisplayFor(modelItem => item.AddressLine2)
-                                @Html.DisplayFor(modelItem => item.City),&nbsp;
-                                @Html.DisplayFor(modelItem => item.State)&nbsp;
-                                @Html.DisplayFor(modelItem => item.Zip)
-                                <br>
-                                @Html.DisplayFor(modelItem => item.Email1)
-                                <br>
-                                @Html.DisplayFor(modelItem => item.Email2)
-                                <br>
-                            </td>
-                                @*<td>
-            <a asp-action="Edit" asp-route-id="@item.Name">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.AddressLine1">Details</a> |
-        </td>*@
-</tr>
-            }
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressLine1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressLine2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email2)
+            </td>
+            @Html.HiddenFor(modelItem => item.EId)
+            <td>
+                <a asp-action="Edit" asp-controller="Employees" asp-route-id="@item.EId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.EId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.EId">Delete</a>
+            </td>
+        </tr>
+        }
     </tbody>
 </table>

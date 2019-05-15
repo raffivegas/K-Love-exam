@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KLoveCompanyCRUD.Models;
+using KLoveCompanyCRUD.View_Models;
 
 namespace KLoveCompanyCRUD.Controllers
 {
@@ -61,7 +62,7 @@ namespace KLoveCompanyCRUD.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(employee);
+            return View("~/Views/Summary/Index.cshtml");
         }
 
         // GET: Employees/Edit/5
@@ -110,9 +111,9 @@ namespace KLoveCompanyCRUD.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Summary");
             }
-            return View(employee);
+            return View("~/Views/Summary/Index.cshtml");
         }
 
         // GET: Employees/Delete/5
@@ -130,7 +131,7 @@ namespace KLoveCompanyCRUD.Controllers
                 return NotFound();
             }
 
-            return View(employee);
+            return View("~/Views/Summary/Index.cshtml");
         }
 
         // POST: Employees/Delete/5
@@ -148,5 +149,17 @@ namespace KLoveCompanyCRUD.Controllers
         {
             return _context.Employee.Any(e => e.Id == id);
         }
+
+        //private SummaryVM SwapModel(Employee employee)
+        //{
+        //    SummaryVM summaryVM = new SummaryVM();
+        //    summaryVM.AddressLine1 = employee.AddressLine1;
+        //    summaryVM.AddressLine2 = employee.AddressLine2;
+        //    summaryVM.FirstName = employee.FirstName;
+        //    summaryVM.LastName = employee.LastName;
+        //    summaryVM.EId = employee.Id;
+        //    summaryVM.
+        //    return;
+        //}
     }
 }
