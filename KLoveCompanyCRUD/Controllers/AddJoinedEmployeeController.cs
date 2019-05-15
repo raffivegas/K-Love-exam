@@ -60,7 +60,7 @@ namespace KLoveCompanyCRUD.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //public async Task<IActionResult> Create([Bind("FirstName,LastName,AddressLine1,AddressLine2,City,State,Zip,Email1,Email2")] Employee employee)
-        public async Task<IActionResult> Create(AddEmployeeVM dept,[Bind("FirstName,LastName,AddressLine1,AddressLine2,City,State,Zip,Email1,Email2")] Employee employee)
+        public async Task<IActionResult> Create([Bind("DepartmentId,FirstName,LastName,AddressLine1,AddressLine2,City,State,Zip,Email1,Email2")] Employee employee)
         {
 
             if (ModelState.IsValid)
@@ -68,9 +68,9 @@ namespace KLoveCompanyCRUD.Controllers
                 //Employee employee = new Employee();
                 //employee.AddressLine1 = 
                 //var test = viewModel.Name;
-                string tst = Request.Form["Departments"][0];
+                //string tst = Request.Form["Departments"][0];
                 //employee.
-                //_context.Add(employee);
+                _context.Add(employee);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

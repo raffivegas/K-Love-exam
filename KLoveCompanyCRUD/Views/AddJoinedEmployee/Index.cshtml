@@ -21,7 +21,7 @@
                 <label asp-for="Name" class="control-label">
                     @*@Html.DropDownListFor(m => m.Departments, new SelectList(Model.Departments.Keys, "Name"))*@
                 </label>
-                @Html.DropDownListFor(m => m.DId, new SelectList(Model.Departments, "Value", "Key"), "- Please select -", new { @class = "form-control" })
+                @Html.DropDownListFor(m => m.DepartmentId, new SelectList(Model.Departments, "Value", "Key"), "- Please select -", new { @class = "form-control" })
                 @*<input asp-for="Name" class="form-control" />
         <span asp-validation-for="Name" class="text-danger"></span>*@
 
