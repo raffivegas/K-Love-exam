@@ -14,7 +14,7 @@ namespace KLoveCompanyCRUD.View_Models
         public class AddEmployeeVM /*: IEnumerable<SummaryVM>*/
         {
             public int EId { get; set; }
-            public string DepartmentId { get; set; }
+            public int DepartmentId { get; set; }
             public string FirstName { get; set; }
             public string LastName { get; set; }
             public string AddressLine1 { get; set; }

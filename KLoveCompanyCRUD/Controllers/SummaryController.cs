@@ -64,5 +64,17 @@ namespace KLoveCompanyCRUD.Controllers
             //return View(viewModelSummaryList);
             return View(testRaf);
         }
+
+        // GET: Employees/Edit/5
+        public IActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            return RedirectToAction("Edit", "AddJoinedEmployee", new { id });
+        }
+
     }
 }
