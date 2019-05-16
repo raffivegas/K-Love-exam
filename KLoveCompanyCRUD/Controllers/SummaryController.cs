@@ -17,12 +17,6 @@ namespace KLoveCompanyCRUD.Controllers
 
         public SummaryVM testRaf = new SummaryVM();
         
-
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
-
         public SummaryController(KLoveCompanyCRUDContext context)
         {
             _context = context;
@@ -57,7 +51,6 @@ namespace KLoveCompanyCRUD.Controllers
                 viewModelSummary.Zip = row.Zip;
                 viewModelSummary.Email1 = row.Email1;
                 viewModelSummary.Email2 = row.Email2;
-                //viewModelSummaryList.Add(viewModelSummary);
                 testRaf.summaryVMs.Add(viewModelSummary);
             }
 
@@ -74,6 +67,26 @@ namespace KLoveCompanyCRUD.Controllers
             }
 
             return RedirectToAction("Edit", "JoinedEmployee", new { id });
+        }
+
+        // GET: Employees/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var employee = await _context.Employee.FindAsync(id);
+            if (employee == null)
+            {
+                return NotFound();
+            }
+            _context.Employee.Remove(employee);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
+            //return View("~/Views/Summary/Index.cshtml");
         }
 
     }

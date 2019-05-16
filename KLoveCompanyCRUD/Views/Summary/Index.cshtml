@@ -8,7 +8,9 @@
 <h1>Summary</h1>
 
 <p>
-    <a asp-action="Create" asp-controller="JoinedEmployee">Add New Employee</a>
+        <a asp-action="Create" asp-controller="JoinedEmployee">Add New Employee</a>
+        <a asp-action="Create" asp-controller="Departments">Add New Department</a>
+        <a asp-action="Index" asp-controller="Departments">Manage Departments</a> 
 </p>
 <table class="table">
     <thead>
@@ -83,11 +85,8 @@
             </td>
             @Html.HiddenFor(modelItem => item.EId)
             <td>
-                @*<a asp-action="Edit" asp-controller="Employees" asp-route-id="@item.EId">Edit</a>*@
-                @*<input type="submit" value="Edit" />*@
-                <a asp-action="Edit" asp-route-id="@item.EId">Edit</a> |
-                @*<a asp-route="EditEmployee" asp-route-id="@item.EId">Edit</a>*@
-                <a asp-action="Details" asp-route-id="@item.EId">Details</a>
+                <a asp-action="Edit" asp-route-id="@item.EId">Edit</a>
+                <br>
                 <a asp-action="Delete" asp-route-id="@item.EId">Delete</a>
             </td>
         </tr>

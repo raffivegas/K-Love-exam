@@ -150,16 +150,5 @@ namespace KLoveCompanyCRUD.Controllers
             return _context.Employee.Any(e => e.Id == id);
         }
 
-        //private SummaryVM SwapModel(Employee employee)
-        //{
-        //    SummaryVM summaryVM = new SummaryVM();
-        //    summaryVM.AddressLine1 = employee.AddressLine1;
-        //    summaryVM.AddressLine2 = employee.AddressLine2;
-        //    summaryVM.FirstName = employee.FirstName;
-        //    summaryVM.LastName = employee.LastName;
-        //    summaryVM.EId = employee.Id;
-        //    summaryVM.
-        //    return;
-        //}
     }
 }
